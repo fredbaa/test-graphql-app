@@ -1,6 +1,8 @@
 const graphql = require('graphql');
 const axios = require('axios');
 
+const dbUrl = "http://localhost:3000";
+
 const {
   GraphQLObjectType,
   GraphQLString,
@@ -24,7 +26,7 @@ const RootQuery = new GraphQLObjectType({
       type: UserType,
       args: { id: { type: GraphQLString } },
       resolve(parentValue, args) {
-        return axios.get(`http://localhost:3000/users/${args.id}`)
+        return axios.get(`${dbUrl}/users/${args.id}`)
                     .then(resp => resp.data); // needs this because of axios returns a 'data' column
       }
     }
