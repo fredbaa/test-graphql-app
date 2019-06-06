@@ -34,4 +34,4 @@ const RootQuery = new GraphQLObjectType({
   }
 });
 
-module.exports = { RootQuery, UserType, CompanyType };
+module.exports = RootQuery;
