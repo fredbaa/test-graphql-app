@@ -12,6 +12,10 @@ const {
 
 const CompanyType = new GraphQLObjectType({
   name: 'Company',
+  // fields wrapped in the fat arrow notation is used here
+  // because of closure scopes in javascript. This way, CompanyType and UserType
+  // are defined, but only gets executed when used.
+  // This fixes circular reference between UserType and CompanyType definition
   fields: () =>  ({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
